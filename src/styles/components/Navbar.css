@@ -1,0 +1,46 @@
+.nav {
+  background-color: #f0f0f0;
+  font-size: 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.navMenu {
+  background-color: #f0f0f0;
+}
+
+.navMenu .ant-menu-item {
+  font-size: 16px;
+}
+
+.navMenu .ant-menu-item .anticon {
+  font-size: 25px;
+}
+
+.divider {
+  color: #001529;
+  border-top: 3px solid #001529;
+}
+
+/* Dark Mode */
+body.dark-mode .nav {
+  background-color: #001529;
+}
+
+body.dark-mode .navMenu {
+  background-color: #001529;
+}
+
+body.dark-mode .divider {
+  color: #001529;
+  border-top: 3px solid #f0f0f0;
+}
+
+body.dark-mode .navMenu .ant-menu-item {
+  color: #f0f0f0 !important;
+}
+
+body.dark-mode .navMenu .ant-menu-item .anticon {
+  color: #f0f0f0;
+}

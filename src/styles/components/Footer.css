@@ -1,0 +1,99 @@
+.footer {
+  background: #f0f0f0;
+  padding: 30px;
+  margin: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: grid;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin-right: 30px;
+}
+
+.footer-socials .footer-icon {
+  font-size: 30px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Increase the size of Yahoo icon */
+.footer-socials .footer-icon.yahoo-icon {
+  font-size: 45px;
+}
+
+.footer-socials .footer-icon:hover {
+  transform: scale(1.1);
+}
+
+.footer-text {
+  font-size: 22px;
+}
+
+.footer.dark-mode {
+  background: #001529;
+  color: white;
+}
+
+.footer.dark-mode .footer-text {
+  color: white;
+}
+
+.footer-dark-mode {
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-dark-icon {
+  font-size: 32px;
+  color: #1890ff;
+}
+
+/* Footer styles for dark mode */
+body.dark-mode footer {
+  background-color: #1f1f1f;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 15px;
+  }
+
+  .footer-logo img {
+    height: 40px;
+    margin-right: 20px;
+  }
+
+  .footer-socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .footer-socials .footer-icon {
+    font-size: 35px;
+    margin-right: 20px;
+  }
+
+  .footer-text {
+    font-size: 18px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .footer-dark-mode {
+    font-size: 24px;
+  }
+
+  .footer-dark-icon {
+    font-size: 28px;
+  }
+}

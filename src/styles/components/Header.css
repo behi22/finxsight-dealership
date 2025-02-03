@@ -1,0 +1,276 @@
+/* Sidebar styling */
+.app-sider {
+  overflow: hidden;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.ant-layout {
+  background-color: transparent;
+}
+
+/* Show the overlay when the sidebar is visible */
+.app-sider.visible + .sidebar-overlay {
+  display: block;
+}
+
+/* Sidebar behavior when collapsed */
+.app-sider.collapsed {
+  width: 0; /* Collapsed state hides sidebar */
+  background-color: transparent; /* Remove background */
+}
+
+.app-sider.visible {
+  width: 240px; /* Full width of the sidebar */
+  background-color: #001529; /* Background color when expanded */
+}
+
+/* Styling for the collapsed menu button */
+.collapsed-btn {
+  padding: 0 !important;
+  margin: 0 0 5 0 !important;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #001529;
+  border: none;
+  border-radius: 40px;
+  transition: all 0.3s ease; /* Smooth transition for button */
+  cursor: pointer;
+  width: 150px;
+  height: 60px;
+}
+
+.collapsed-btn span {
+  display: inline-block;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.collapsed-btn:hover span {
+  color: #001529;
+}
+
+/* Remove highlight effect for menu items */
+.ant-menu-item-selected,
+.ant-menu-item-active {
+  background-color: transparent !important;
+}
+
+/* When the sidebar is collapsed, make sure the menu text is always visible */
+.app-sider .ant-menu {
+  padding: 0;
+  margin: 0;
+}
+
+/* Transition the left margin of the layout when the sidebar is open */
+.app-layout {
+  transition: margin-left 0.3s ease;
+}
+
+.page-title span {
+  color: #001529;
+}
+
+.header-top {
+  background-color: #f0f0f0; /* Fallback color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 80px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added slight shadow for depth */
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Left-aligned */
+  flex: 1;
+}
+
+.collapsed-btn {
+  margin-right: 30px; /* Increased space between button and company logo */
+}
+
+.company-logo {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  margin-right: 40px;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+}
+
+.page-title .anticon {
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+.page-title span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+}
+
+.header-right .ant-btn {
+  color: white;
+  background-color: #001529;
+}
+
+.header-right button {
+  font-size: 36px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header-right button:hover {
+  background-color: #e6f7ff;
+}
+
+.header-bottom {
+  background-image: url('../../assets/images/deal.jpg');
+  background-size: cover;
+  background-position: 50% 60%;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 40px;
+  height: 40vh;
+  margin-top: 20px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.company-logo {
+  font-size: 48px;
+}
+
+/* Ensures the sidebar behaves like a modal */
+.app-sider {
+  transition: transform 0.3s ease-out;
+}
+
+.app-sider.collapsed {
+  transform: translateX(-100%); /* Slide out the sidebar */
+}
+
+/* When sidebar is open, make sure it slides in smoothly */
+.app-sider.visible {
+  transform: translateX(0);
+}
+
+/* Header styles (dark mode) */
+body.dark-mode .header-top {
+  background-color: #001529;
+}
+
+body.dark-mode .page-title span {
+  color: white;
+}
+
+body.dark-mode .ant-btn {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+body.dark-mode .collapsed-btn span {
+  color: #001529;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    height: auto;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .company-logo {
+    font-size: 28px;
+    margin-left: 0;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-left: 0;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .collapsed-btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    margin-right: 0;
+  }
+
+  .header-right {
+    margin-top: 2%;
+    width: 100px;
+  }
+
+  .header-right button {
+    font-size: 75px;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-top {
+    border-radius: 40px;
+  }
+
+  .header-bottom {
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 40px;
+  }
+}

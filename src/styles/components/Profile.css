@@ -1,0 +1,61 @@
+.profile-modal {
+  border-radius: 10px;
+  max-width: 450px;
+}
+
+.profile-modal .ant-modal-header {
+  background-color: #ffffff;
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  text-align: center;
+}
+
+.profile-modal .ant-modal-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.profile-modal .ant-modal-body {
+  padding: 20px;
+}
+
+.profile-modal .ant-divider-horizontal {
+  margin: 0;
+  margin-bottom: 5%;
+}
+
+.profile-modal .ant-menu {
+  background-color: #ffffff;
+  border: none;
+}
+
+.profile-modal .ant-menu-item {
+  font-size: 20px;
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-modal .ant-avatar {
+  background-color: #1890ff;
+}
+
+/* Dark Mode */
+body.dark-mode .ant-modal-content {
+  background-color: #001529;
+  color: #f0f0f0;
+}
+
+body.dark-mode .profile-modal .ant-modal-title {
+  color: #f0f0f0;
+  background-color: #001529;
+}
+
+body.dark-mode .profile-modal .ant-menu {
+  background-color: #001529;
+}
+
+body.dark-mode .profile-modal .ant-menu-item {
+  color: #f0f0f0 !important;
+}
