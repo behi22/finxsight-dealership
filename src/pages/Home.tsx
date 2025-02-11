@@ -58,16 +58,20 @@ const Home: React.FC = () => {
     fetchData();
   }, [dispatch]);
 
-  const vehicleConditionData = [
-    {
-      type: 'New',
-      value: vehicles.filter((v: any) => v.condition === 'New').length,
-    },
-    {
-      type: 'Used',
-      value: vehicles.filter((v: any) => v.condition === 'Used').length,
-    },
-  ];
+  // Ensure that vehicles data is available before filtering
+  const vehicleConditionData =
+    vehicles && vehicles.length > 0
+      ? [
+          {
+            type: 'New',
+            value: vehicles.filter((v: any) => v.condition === 'New').length,
+          },
+          {
+            type: 'Used',
+            value: vehicles.filter((v: any) => v.condition === 'Used').length,
+          },
+        ]
+      : [];
 
   const filteredSales = Array.isArray(sales)
     ? sales.filter((s: any) => new Date(s.date).getMonth() === 0)
@@ -99,6 +103,7 @@ const Home: React.FC = () => {
     }
   };
 
+  // Show a loading spinner until data is available
   if (loading) {
     return <Spin size="large" />;
   }
@@ -116,12 +121,16 @@ const Home: React.FC = () => {
             />
             <Statistic
               title="New"
-              value={vehicleConditionData.find((v) => v.type === 'New')?.value}
+              value={
+                vehicleConditionData.find((v) => v.type === 'New')?.value || 0
+              }
               valueStyle={{ fontSize: 18 }}
             />
             <Statistic
               title="Used"
-              value={vehicleConditionData.find((v) => v.type === 'Used')?.value}
+              value={
+                vehicleConditionData.find((v) => v.type === 'Used')?.value || 0
+              }
               valueStyle={{ fontSize: 18 }}
             />
           </Card>
@@ -144,7 +153,7 @@ const Home: React.FC = () => {
             <Statistic
               title="Revenue"
               value={sales.reduce(
-                (acc: any, sale: any) => acc + sale.selling_price,
+                (acc: any, sale: any) => acc + sale.sellingPrice,
                 0
               )}
               valueStyle={{ fontSize: 24 }}
@@ -224,7 +233,7 @@ const Home: React.FC = () => {
             <ul>
               {sales.slice(0, 5).map((sale: any) => (
                 <li key={sale.id}>
-                  Sale ID: {sale.id} - ${sale.selling_price}
+                  Sale ID: {sale.id} - ${sale.sellingPrice}
                 </li>
               ))}
             </ul>
