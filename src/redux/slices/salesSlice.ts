@@ -25,7 +25,7 @@ const salesSlice = createSlice({
   initialState,
   reducers: {
     setSales: (state, action: PayloadAction<Sale[]>) => {
-      state.sales = action.payload;
+      state.sales = Array.isArray(action.payload) ? action.payload : [];
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;

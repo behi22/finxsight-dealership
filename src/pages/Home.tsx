@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Card, Statistic, Spin, Button, Divider } from 'antd';
-import { Pie, Bar } from '@ant-design/plots';
+import { Pie, Column } from '@ant-design/plots';
 import { RootState, AppDispatch } from '../redux/store';
 import { setVehicles } from '../redux/slices/inventorySlice';
 import { setSales } from '../redux/slices/salesSlice';
@@ -35,7 +35,69 @@ const Home: React.FC = () => {
 
         // Dispatch data to Redux
         dispatch(setVehicles(vehiclesData));
-        if (Array.isArray(salesData)) {
+
+        // Initialize with random sales data if the store is empty
+        if (sales.length === 0) {
+          const initialSales = [
+            {
+              id: 1,
+              userId: 1,
+              vehicleId: 1,
+              sellingPrice: 10000,
+              date: '2024-02-07',
+            },
+            {
+              id: 2,
+              userId: 2,
+              vehicleId: 2,
+              sellingPrice: 15000,
+              date: '2024-02-07',
+            },
+            {
+              id: 3,
+              userId: 3,
+              vehicleId: 3,
+              sellingPrice: 20000,
+              date: '2024-06-08',
+            },
+            {
+              id: 4,
+              userId: 4,
+              vehicleId: 4,
+              sellingPrice: 12000,
+              date: '2024-06-08',
+            },
+            {
+              id: 5,
+              userId: 5,
+              vehicleId: 5,
+              sellingPrice: 34000,
+              date: '2024-06-08',
+            },
+            {
+              id: 6,
+              userId: 6,
+              vehicleId: 6,
+              sellingPrice: 22000,
+              date: '2024-06-08',
+            },
+            {
+              id: 7,
+              userId: 7,
+              vehicleId: 7,
+              sellingPrice: 8000,
+              date: '2024-06-08',
+            },
+            {
+              id: 8,
+              userId: 8,
+              vehicleId: 8,
+              sellingPrice: 28000,
+              date: '2024-10-01',
+            },
+          ];
+          dispatch(setSales(initialSales));
+        } else if (Array.isArray(salesData)) {
           const formattedSales = salesData.map((sale: any) => ({
             id: sale.id,
             userId: sale.userId,
@@ -43,9 +105,9 @@ const Home: React.FC = () => {
             sellingPrice: sale.sellingPrice,
             date: sale.date,
           }));
-
           dispatch(setSales(formattedSales));
         }
+
         dispatch(setUser(usersData[0])); // Assuming we get the first user for simplicity
 
         setLoading(false);
@@ -60,19 +122,20 @@ const Home: React.FC = () => {
 
   // Ensure that vehicles data is available before filtering
   const vehicleConditionData =
-    vehicles && vehicles.length > 0
+    Array.isArray(vehicles) && vehicles.length > 0
       ? [
           {
             type: 'New',
-            value: vehicles.filter((v: any) => v.condition === 'New').length,
+            value: vehicles.filter((v: any) => v.condition === 'new').length,
           },
           {
             type: 'Used',
-            value: vehicles.filter((v: any) => v.condition === 'Used').length,
+            value: vehicles.filter((v: any) => v.condition === 'used').length,
           },
         ]
       : [];
 
+  // Ensure that sales data is available before filtering
   const filteredSales = Array.isArray(sales)
     ? sales.filter((s: any) => new Date(s.date).getMonth() === 0)
     : [];
@@ -80,13 +143,54 @@ const Home: React.FC = () => {
   const monthlySalesData = [
     {
       month: 'Jan',
-      sales: filteredSales.length,
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 0).length,
     },
     {
       month: 'Feb',
       sales: sales.filter((s: any) => new Date(s.date).getMonth() === 1).length,
     },
-    // Add for other months as needed
+    {
+      month: 'Mar',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 2).length,
+    },
+    {
+      month: 'Apr',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 3).length,
+    },
+    {
+      month: 'May',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 4).length,
+    },
+    {
+      month: 'Jun',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 5).length,
+    },
+    {
+      month: 'Jul',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 6).length,
+    },
+    {
+      month: 'Aug',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 7).length,
+    },
+    {
+      month: 'Sep',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 8).length,
+    },
+    {
+      month: 'Oct',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 9).length,
+    },
+    {
+      month: 'Nov',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 10)
+        .length,
+    },
+    {
+      month: 'Dec',
+      sales: sales.filter((s: any) => new Date(s.date).getMonth() === 11)
+        .length,
+    },
   ];
 
   const statusColor =
@@ -116,7 +220,7 @@ const Home: React.FC = () => {
           <Card title="Total Vehicles">
             <Statistic
               title="Total"
-              value={vehicles.length}
+              value={Array.isArray(vehicles) ? vehicles.length : 0}
               valueStyle={{ fontSize: 24 }}
             />
             <Statistic
@@ -141,7 +245,7 @@ const Home: React.FC = () => {
           <Card title="Total Sales">
             <Statistic
               title="Total"
-              value={sales.length}
+              value={Array.isArray(sales) ? sales.length : 0}
               valueStyle={{ fontSize: 24 }}
             />
           </Card>
@@ -152,10 +256,15 @@ const Home: React.FC = () => {
           <Card title="Total Revenue">
             <Statistic
               title="Revenue"
-              value={sales.reduce(
-                (acc: any, sale: any) => acc + sale.sellingPrice,
-                0
-              )}
+              value={
+                Array.isArray(sales)
+                  ? sales.reduce(
+                      (acc: number, sale: any) =>
+                        acc + (Number(sale.sellingPrice) || 0),
+                      0
+                    )
+                  : 0
+              }
               valueStyle={{ fontSize: 24 }}
               prefix="$"
             />
@@ -194,21 +303,26 @@ const Home: React.FC = () => {
               angleField="value"
               colorField="type"
               radius={0.8}
-              label={{ visible: true }} // Enable labels without shape type
               interactions={['element-active']}
             />
           </Card>
         </Col>
 
         <Col sm={24} md={12}>
-          <Card title="Monthly Sales Trends">
-            <Bar
+          <Card
+            title="Monthly Sales Trends"
+            className="sales"
+            style={{
+              width: '100%',
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            }}
+          >
+            <Column
               data={monthlySalesData}
               xField="month"
               yField="sales"
               seriesField="month"
-              label={{ position: 'top' }}
-              color="blue"
             />
           </Card>
         </Col>
@@ -219,11 +333,16 @@ const Home: React.FC = () => {
         <Col sm={24} md={12}>
           <Card title="Recent Activity - Vehicle Additions">
             <ul>
-              {vehicles.slice(0, 5).map((vehicle: any) => (
-                <li key={vehicle.vin}>
-                  {vehicle.make} {vehicle.model} - {vehicle.year}
-                </li>
-              ))}
+              {Array.isArray(vehicles) &&
+                vehicles
+                  .slice()
+                  .reverse()
+                  .slice(0, 5)
+                  .map((vehicle: any) => (
+                    <li key={vehicle.vin || vehicle.id}>
+                      {vehicle.make} {vehicle.model} - {vehicle.year}
+                    </li>
+                  ))}
             </ul>
           </Card>
         </Col>
@@ -231,11 +350,18 @@ const Home: React.FC = () => {
         <Col sm={24} md={12}>
           <Card title="Recent Activity - Sales Transactions">
             <ul>
-              {sales.slice(0, 5).map((sale: any) => (
-                <li key={sale.id}>
-                  Sale ID: {sale.id} - ${sale.sellingPrice}
-                </li>
-              ))}
+              {Array.isArray(sales) &&
+                [...sales]
+                  .sort(
+                    (a, b) =>
+                      new Date(b.date).getTime() - new Date(a.date).getTime()
+                  ) // Sort by date, descending (latest first)
+                  .slice(0, 5) // Get the latest 5 sales
+                  .map((sale: any) => (
+                    <li key={sale.id}>
+                      Sale ID: {sale.id} - ${sale.sellingPrice}
+                    </li>
+                  ))}
             </ul>
           </Card>
         </Col>

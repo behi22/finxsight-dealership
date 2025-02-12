@@ -1,8 +1,9 @@
 import React from 'react';
 import { Modal, Form, Input, Button, Row, Col, Select } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { setVehicles } from '../redux/slices/inventorySlice';
+import { RootState } from '../redux/store'; // Import RootState
 
 const { Option } = Select;
 
@@ -11,14 +12,14 @@ const AddVehicleModal: React.FC<{ open: boolean; onClose: () => void }> = ({
   onClose,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const vehicles = useSelector((state: RootState) => state.inventory.vehicles); // Use RootState to access Redux state
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
-    // Handle form submission
     console.log('Vehicle Details:', values);
 
-    // Dispatch the action to add the vehicle to Redux
-    dispatch(setVehicles(values));
+    // Append the new vehicle to the existing vehicles array
+    dispatch(setVehicles([...vehicles, values])); // Update Redux state
 
     // Close the modal after submission
     onClose();
@@ -32,13 +33,6 @@ const AddVehicleModal: React.FC<{ open: boolean; onClose: () => void }> = ({
       footer={null}
       width="100%"
       style={{ top: 0 }}
-      styles={{
-        body: {
-          padding: 24,
-          height: 'calc(100vh - 64px)',
-          overflowY: 'scroll',
-        },
-      }}
     >
       <Form form={form} onFinish={onFinish} layout="vertical">
         <Row gutter={16}>
@@ -101,8 +95,8 @@ const AddVehicleModal: React.FC<{ open: boolean; onClose: () => void }> = ({
               ]}
             >
               <Select placeholder="Select condition">
-                <Option value="New">New</Option>
-                <Option value="Used">Used</Option>
+                <Option value="new">New</Option>
+                <Option value="used">Used</Option>
               </Select>
             </Form.Item>
           </Col>

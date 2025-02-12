@@ -62,3 +62,47 @@ body.dark-mode .user-container {
 body.dark-mode .user-container h2 {
   color: #f0f0f0;
 }
+
+body.dark-mode .ant-card {
+  background-color: #2e567b;
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-card .ant-bar {
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-card-head-title {
+  color: #ffffff;
+}
+
+body.dark-mode .ant-statistic-title {
+  color: #ffffff;
+}
+
+body.dark-mode .ant-statistic-content {
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-form-item-required {
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-form-item-label label {
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-modal-title {
+  color: #f0f0f0;
+  background-color: #001529;
+}
+
+body.dark-mode .ant-modal-close {
+  color: rgb(168, 48, 48);
+  background-color: #001529;
+}
+
+body.dark-mode .ant-modal-close:hover {
+  color: red;
+  background-color: #133a5f;
+}

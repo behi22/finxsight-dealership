@@ -10,12 +10,13 @@ import {
   Col,
   Spin,
 } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { setSales } from '../redux/slices/salesSlice';
 import { getVehicles } from '../services/inventory';
 import { getUsers } from '../services/users';
 import dayjs from 'dayjs';
+import { RootState } from '../redux/store';
 
 const { Option } = Select;
 
@@ -28,6 +29,7 @@ const CreateSaleModal: React.FC<{ open: boolean; onClose: () => void }> = ({
   const [vehicles, setVehiclesData] = useState<any[]>([]);
   const [users, setUsersData] = useState<any[]>([]);
   const [form] = Form.useForm();
+  const sales = useSelector((state: RootState) => state.sales.sales); // Access sales state from Redux
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,17 +49,15 @@ const CreateSaleModal: React.FC<{ open: boolean; onClose: () => void }> = ({
   }, []);
 
   const onFinish = (values: any) => {
-    // Convert the dayjs object to a string
     const saleData = {
       ...values,
       date: values.date ? values.date.toISOString() : null, // Convert to ISO string
+      id: sales.length + 1, // Make sure to generate a new unique ID (or get from the backend)
+      sellingPrice: Number(values.price), // Ensure it's a number
     };
 
-    // Handle form submission
-    console.log('Form Values:', values);
-
-    // Dispatch the action to add the sale to Redux
-    dispatch(setSales(saleData));
+    // Append the new sale to the existing sales array
+    dispatch(setSales([...sales, saleData])); // Update Redux state
 
     // Close the modal after submission
     onClose();
