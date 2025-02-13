@@ -15,6 +15,10 @@
   margin-right: 30px;
 }
 
+.footer-socials {
+  margin-right: 0;
+}
+
 .footer-socials .footer-icon {
   font-size: 30px;
   margin-right: 10px;
@@ -24,6 +28,7 @@
 /* Increase the size of Yahoo icon */
 .footer-socials .footer-icon.yahoo-icon {
   font-size: 45px;
+  margin-right: 0;
 }
 
 .footer-socials .footer-icon:hover {
@@ -32,6 +37,7 @@
 
 .footer-text {
   font-size: 22px;
+  margin-left: 0;
 }
 
 .footer.dark-mode {

@@ -18,6 +18,9 @@ import './styles/components/Footer.css';
 
 import './styles/pages/Home.css';
 import './styles/pages/User.css';
+import './styles/pages/Inventory.css';
+import './styles/pages/Sales.css';
+import './styles/pages/Settings.css';
 
 const { Content } = Layout;
 
@@ -45,7 +48,6 @@ const App: React.FC = () => {
           <Content
             style={{
               padding: '24px',
-              minHeight: 'calc(100vh - 64px)',
               backgroundColor: 'transparent',
             }}
           >

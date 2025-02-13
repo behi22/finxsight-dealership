@@ -1,0 +1,41 @@
+.construction-container {
+  padding: 24px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .construction-container {
+  background-color: #001529;
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-space-item .ant-typography {
+  color: #f0f0f0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .construction-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .construction-container .ant-space {
+    padding: 10px;
+  }
+
+  .construction-container .ant-typography-title {
+    font-size: 24px;
+  }
+
+  .construction-container .ant-typography p {
+    font-size: 16px;
+  }
+}

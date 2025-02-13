@@ -9,7 +9,6 @@ import { setUser } from '../redux/slices/userSlice';
 import { getVehicles } from '../services/inventory';
 import { getSales } from '../services/sales';
 import { getUsers } from '../services/users';
-import { useNavigate } from 'react-router-dom';
 import CreateSaleModal from '../components/CreateSaleModal';
 import AddVehicleModal from '../components/AddVehicleModal';
 
@@ -20,7 +19,6 @@ const Home: React.FC = () => {
   const { sales } = useSelector((state: RootState) => state.sales);
   const { user } = useSelector((state: RootState) => state.user);
   const { failMode } = useSelector((state: RootState) => state.settings);
-  const navigate = useNavigate();
 
   const [createSaleModalOpen, setCreateSaleModalOpen] = useState(false);
   const [addVehicleModalOpen, setAddVehicleModalOpen] = useState(false);
