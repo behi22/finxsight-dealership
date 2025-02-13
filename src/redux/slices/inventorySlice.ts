@@ -35,8 +35,10 @@ const inventorySlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+    resetInventory: () => initialState,
   },
 });
 
-export const { setVehicles, setLoading, setError } = inventorySlice.actions;
+export const { setVehicles, setLoading, setError, resetInventory } =
+  inventorySlice.actions;
 export const inventoryReducer = inventorySlice.reducer;

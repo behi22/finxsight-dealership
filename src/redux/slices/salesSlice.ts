@@ -33,8 +33,10 @@ const salesSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+    resetSales: () => initialState,
   },
 });
 
-export const { setSales, setLoading, setError } = salesSlice.actions;
+export const { setSales, setLoading, setError, resetSales } =
+  salesSlice.actions;
 export const salesReducer = salesSlice.reducer;

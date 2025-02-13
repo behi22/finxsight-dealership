@@ -1,4 +1,4 @@
-import { Row, Col, Space, Typography } from 'antd';
+import { Row, Col, Space, Typography, Tooltip } from 'antd';
 import {
   YahooOutlined,
   XOutlined,
@@ -46,13 +46,15 @@ const AppFooter = ({
         </Col>
 
         <Col>
-          <Space onClick={toggleDarkMode} className="footer-dark-mode">
-            {darkMode ? (
-              <BulbFilled className="footer-dark-icon" />
-            ) : (
-              <BulbOutlined className="footer-dark-icon" />
-            )}
-          </Space>
+          <Tooltip title={darkMode ? 'Light Mode' : 'Dark Mode'}>
+            <Space onClick={toggleDarkMode} className="footer-dark-mode">
+              {darkMode ? (
+                <BulbFilled className="footer-dark-icon" />
+              ) : (
+                <BulbOutlined className="footer-dark-icon" />
+              )}
+            </Space>
+          </Tooltip>
         </Col>
       </Row>
     </footer>

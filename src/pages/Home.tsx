@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Card, Statistic, Spin, Button, Divider } from 'antd';
 import { Pie, Column } from '@ant-design/plots';
 import { RootState, AppDispatch } from '../redux/store';
-import { setVehicles } from '../redux/slices/inventorySlice';
-import { setSales } from '../redux/slices/salesSlice';
+import { setVehicles, resetInventory } from '../redux/slices/inventorySlice';
+import { setSales, resetSales } from '../redux/slices/salesSlice';
 import { setUser } from '../redux/slices/userSlice';
 import { getVehicles } from '../services/inventory';
 import { getSales } from '../services/sales';
@@ -118,7 +118,6 @@ const Home: React.FC = () => {
     fetchData();
   }, [dispatch]);
 
-  // Ensure that vehicles data is available before filtering
   const vehicleConditionData =
     Array.isArray(vehicles) && vehicles.length > 0
       ? [
@@ -132,11 +131,6 @@ const Home: React.FC = () => {
           },
         ]
       : [];
-
-  // Ensure that sales data is available before filtering
-  const filteredSales = Array.isArray(sales)
-    ? sales.filter((s: any) => new Date(s.date).getMonth() === 0)
-    : [];
 
   const monthlySalesData = [
     {
@@ -192,7 +186,11 @@ const Home: React.FC = () => {
   ];
 
   const statusColor =
-    failMode === 'none' ? 'green' : failMode === 'delayed' ? 'yellow' : 'red';
+    failMode === 'none'
+      ? 'limegreen'
+      : failMode === 'delayed'
+      ? 'yellow'
+      : 'red';
 
   const quickActions = (action: string) => {
     if (action === 'addVehicle') {
@@ -200,8 +198,10 @@ const Home: React.FC = () => {
     } else if (action === 'createSale') {
       setCreateSaleModalOpen(true); // Open Create Sale Modal
     } else if (action === 'resetDatabase') {
-      // Example: reset database (you may want to perform an API call or reset Redux state)
+      // Reset database: you may want to perform an API call or reset Redux state. Right now I am doing redux state reset!
       console.log('Database reset triggered!');
+      dispatch(resetInventory()); // Reset inventory state
+      dispatch(resetSales()); // Reset sales state
     }
   };
 
@@ -373,6 +373,9 @@ const Home: React.FC = () => {
       <Row gutter={[16, 24]}>
         <Col sm={24} md={8}>
           <Button
+            style={{
+              width: '60%',
+            }}
             type="primary"
             block
             onClick={() => quickActions('addVehicle')}
@@ -382,6 +385,9 @@ const Home: React.FC = () => {
         </Col>
         <Col sm={24} md={8}>
           <Button
+            style={{
+              width: '60%',
+            }}
             type="primary"
             block
             onClick={() => quickActions('createSale')}
@@ -395,6 +401,7 @@ const Home: React.FC = () => {
               backgroundColor: 'red',
               borderColor: 'red',
               color: 'white',
+              width: '60%',
             }}
             block
             onClick={() => quickActions('resetDatabase')}
