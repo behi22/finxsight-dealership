@@ -1,50 +1,92 @@
-# FinxSight
+#
 
-Insight into dealership operations of Finx
+FinxSight Dealership
 
-# Getting Started with Create React App
+> FinxSight Dealership Dashboard
+>
+> <!--Live demo [_here_]().  If you have the project hosted somewhere, include the link here. -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
+- [Usage](#usage)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+<!-- * [License](#license) -->
 
-In the project directory, you can run:
+## General Information
 
-### `npm start`
+A Dashboard to display and manipulate data from Finx's backend server. Came up with the name by combining the actual company name (Finx) with the word oversight which comes to mind when you are thinking of a dashboard that gives you oversight on your data (Sight). The backend server was provided by Finx Software Technology Inc. and included many options for manipulating the semi-persistent data which is stored on a SQLite Database. The goal is to showcase my technical skills, creativity, and approach to real-world problem-solving.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- This Repo includes the most Up-to-date Post-Deployment version of the code.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- The Pre-Deployment Repo can be viewed at: https://github.com/behi22/FinxSight
 
-### `npm test`
+<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- npm - 8.15.0
+- React.js - 18.2.0
+- Redux - 8.0.2
+- antd - 5.23.3
+- HTML - version html5
+- CSS
+- TypeScript
+- babel
+- Axios - 1.7.9
+- AJAX
+- git version 2.38.1.windows.1
+- github
+- SQLite
+- Vercel
+- Postman
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![alt text](image-1.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+**Layout**: Initial layout of the project was sketched by using Figma: [Link](https://www.figma.com/design/xGLWBHIxSbcHrUtf2euZJT/Finx-Project?node-id=0-1&p=f&t=dqJ3aLbKgrETSlXT-0)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The app should have the following features:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Dashboard Home** - Neat and User-Friendly component based Frontend, created with React, Redux, and TypeScript, and deployed using Vercel. Shows the General Data and has Quick Actions for data manipulation and an easy-to-use navigation menu.
+- **Settings Page** - Settings management page for Database File Management, Fail Mode Selection, and Reset Database Option.
+- **User Management Page** - Data display and manipulation page for the app's users. (admin and user mode for future purposes)
+- **Inventory Management Page** - Data display and manipulation page for vehicle inventory.
+- **Sales Management Page** - Data display and manipulation page for dealership sales.
+- **Dark Mode** - Located on the Footer, able to effectively change the lighting of the entire app.
+- Effective integration of Frontend components manipulating and displaying Backend Data.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Project Status
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Project is: 75% Complete (Demo)
 
-## Learn More
+## Room for Improvement
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- As indicated in the comments in [User.tsx](/src/pages/User.tsx), This page should only give you options for editing your own info if you are not an admin!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- The CSS needs to be worked on extensively in order to make the app more mobile-friendly, especially for the Footer and Page components.
+
+- The [Settings](/src/pages/Settings.tsx), [Sales](/src/pages/Sales.tsx), and [Inventory](/src/pages/Inventory.tsx) pages are still under construction.
+
+## Acknowledgements
+
+- Many thanks to Finx Software Technology Inc. for including me in their Full Stack Developer assessment project.
+
+## Contact
+
+Created by Behbod Babai - feel free to contact me via email!
+my email: behibabai@gmail.com
+
+<!-- Optional -->
+<!-- ## License -->
+<!-- This project is open source and available under the [... License](). -->
+
+<!-- You don't have to include all sections - just the one's relevant to your project -->
