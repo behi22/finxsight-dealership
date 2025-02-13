@@ -106,3 +106,35 @@ body.dark-mode .ant-modal-close:hover {
   color: red;
   background-color: #133a5f;
 }
+
+body.dark-mode .ant-table-container {
+  background-color: #133a5f;
+  color: #f0f0f0;
+  border-radius: 10px;
+}
+
+body.dark-mode .ant-table-content {
+  background-color: #133a5f;
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-table-thead th {
+  background-color: #133a5f;
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-table-row:hover > td {
+  background-color: #184a79 !important;
+}
+
+body.dark-mode .ant-pagination-item {
+  background-color: #001529;
+}
+
+body.dark-mode .ant-pagination-item-link {
+  color: #f0f0f0 !important;
+}
+
+body.dark-mode .ant-upload {
+  color: #f0f0f0 !important;
+}
